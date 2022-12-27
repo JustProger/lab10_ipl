@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
 XML_SERVER = 'http://localhost:3000/?'
@@ -9,26 +11,26 @@ class IndexController < ApplicationController
 
   def get_xml(array, number)
     uri = URI(XML_SERVER)
-    uri.query = URI.encode_www_form({ array: array, number: number })
+    uri.query = URI.encode_www_form({ array:, number: })
     # --------------------
-      p URI.encode_www_form({ array: array, number: number })
-      p uri
-      p uri.class
+    p URI.encode_www_form({ array:, number: })
+    p uri
+    p uri.class
     # --------------------
     Net::HTTP.get_response(uri)
   end
 
   def render_client(xml)
     # -----------------
-      p xml.class
-      p xml.insert(xml.index("\n"), XSL_LINK)
+    p xml.class
+    p xml.insert(xml.index("\n"), XSL_LINK)
     # -----------------
     xml.insert(xml.index("\n"), XSL_LINK)
   end
 
   def render_server(xml)
     # ------------
-      p XSLT
+    p XSLT
     # ------------
     XSLT.transform(Nokogiri::XML(xml))
         .to_s

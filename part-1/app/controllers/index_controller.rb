@@ -14,7 +14,7 @@ class IndexController < ApplicationController
       end
     else
       # redirect_to(root_path,
-                  # notice: [-2, 'Количество элементов массива не совпадает с тем, что была введено!!!', nil, nil])
+      # notice: [-2, 'Количество элементов массива не совпадает с тем, что была введено!!!', nil, nil])
     end
 
     @sequences = enum.to_a.select { |array| array.any? { |element| is_square?(element) } }
