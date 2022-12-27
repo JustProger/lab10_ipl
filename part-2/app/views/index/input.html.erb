@@ -1,7 +1,7 @@
 <h1>Index#input</h1>
 <p>Find me in app/views/index/input.html.erb</p>
 <p>Введите исходные данные:</p>
-<%= form_with url: index_output_url, method: :get do |form| %>
+<%= form_with url: index_output_url(format: :html), method: :get do |form| %>
 	<%= form.label :query, "Поле ввода:" %>
   <br>
   <%= form.text_field :number, placeholder: "Количество элементов последовательности", value: "12" %>
@@ -9,5 +9,5 @@
   <%= form.text_field :array, placeholder: "Последовательность", value: "1 4 25 64 43 16 59 10 12 13 81 121" %>
   <br>
   <%= form.submit "Ответ в формате html:" %>
-  <input type="submit" formaction= <%= index_output_url + '.xml' %> value="Ответ в формате xml:">
+  <input type="submit" formaction= <%= index_output_url(format: :xml) %> value="Ответ в формате xml:">
 <% end %>

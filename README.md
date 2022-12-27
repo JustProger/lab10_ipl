@@ -41,7 +41,7 @@ puts xslt.transform(doc)
 
 10. Серверное xml+xslt->html
 Клиентское xml+xslt->html
-## Инициализация проекта ```cd part-1``` ```cd part-2```
+## Инициализация проекта ```cd part-1``` ```cd part-2``` (для каждого)
 1. Для установки гемов локально (необязательно):
 
     ```bash
@@ -52,27 +52,22 @@ puts xslt.transform(doc)
     ```bash
     bundle install
     ```
-3. Инициализировать webpacker
-
-    ```bash
-    rails webpacker:install
-    ```
 ## Запуски
-1. Запуск Проекта
+1. Запуск Проекта:
+    В ```part-1```:
 
     ```bash
-    rails server <порт>
-    
+    rails s
     ```
+    
+    В ```part-2```:
+
+    ```bash
+    rails s -p 3001
+    ```
+
 2. Запуск Rubocop
 
     ```bash
     bundle exec rubocop
     ```
-3. Запуск Reek
-
-    ```bash
-    bundle exec reek
-    ```
-## Аналог
-```bundle exec <команда>``` можно заменить на ```bin/<команда>```, если предварительно сделать ```bundle binstubs <команда>```, и на ```<команда>```, если гем установлен не локально.s
