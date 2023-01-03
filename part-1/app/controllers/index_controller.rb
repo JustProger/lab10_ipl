@@ -6,15 +6,10 @@ class IndexController < ApplicationController
     array = params[:array].split.map(&:to_i)
     number = params[:number].to_i
 
-    if number == array.size
-      enum = array.slice_when do |before, after|
-        before_mod = is_square?(before)
-        after_mod = is_square?(after)
-        (!before_mod && after_mod) || (before_mod && !after_mod)
-      end
-    else
-      # redirect_to(root_path,
-      # notice: [-2, 'Количество элементов массива не совпадает с тем, что была введено!!!', nil, nil])
+    enum = array.slice_when do |before, after|
+      before_mod = is_square?(before)
+      after_mod = is_square?(after)
+      (!before_mod && after_mod) || (before_mod && !after_mod)
     end
 
     @sequences = enum.to_a.select { |array| array.any? { |element| is_square?(element) } }
