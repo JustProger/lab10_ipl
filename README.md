@@ -40,7 +40,7 @@ puts xslt.transform(doc)
 9. Итоговая форма ввода параметра должна содержать кнопки или селектор, позволяющие проверить два варианта преобразования:
 
 10. Серверное xml+xslt->html
-Клиентское xml+xslt->html
+11. Клиентское xml+xslt->html
 ## Инициализация проекта ```cd part-1``` ```cd part-2``` (для каждого)
 1. Для установки гемов локально (необязательно):
 
@@ -66,8 +66,12 @@ puts xslt.transform(doc)
     rails s -p 3001
     ```
 
-2. Запуск Rubocop
+2. Запуск Rubocop в корне проекта, part-1 или part-2
 
     ```bash
-    bundle exec rubocop
+    rubocop .
+    ```
+3. Запуск тестов в part-2:
+    ```bash
+    rspec spec/requests/index_spec.rb
     ```
