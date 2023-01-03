@@ -37,12 +37,22 @@ class IndexController < ApplicationController
     ]
 
     respond_to do |format|
-      format.xml { render xml: result }
-      format.rss { render xml: result }
+      format.xml { render xml: render_xml(result) }
+      format.rss { render xml: render_rss(result) }
     end
   end
 
   private
+
+  def render_xml(result)
+    p 'render_xml'
+    result
+  end
+
+  def render_rss(result)
+    p 'render_rss'
+    result
+  end
 
   def is_square?(x)
     (Math.sqrt(x) % 1).zero?

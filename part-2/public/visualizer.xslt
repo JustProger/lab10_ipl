@@ -6,6 +6,7 @@
         <title>XML Visualiser</title>
       </head>
       <body>
+        <h2>Результат обработки:</h2>
         <table>
           <xsl:for-each select="objects/object">
             <tr>

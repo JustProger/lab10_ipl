@@ -1,13 +1,25 @@
 <h1>Index#input</h1>
 <p>Find me in app/views/index/input.html.erb</p>
 <p>Введите исходные данные:</p>
-<%= form_with url: index_output_url(format: :html), method: :get do |form| %>
-	<%= form.label :query, "Поле ввода:" %>
+<!-- По умолчанию, если не указан формат, считается, что в строке указан .html -->
+<!-- Т. е. это то же самое, что если указать index_output_url(format: :html) вместо index_output_url -->
+<%= form_with url: index_output_url, method: :get do |form| %> 
+	<%= form.label :number, "Поле ввода:" %>
   <br>
   <%= form.text_field :number, placeholder: "Количество элементов последовательности", value: "12" %>
   <br>
   <%= form.text_field :array, placeholder: "Последовательность", value: "1 4 25 64 43 16 59 10 12 13 81 121" %>
   <br>
-  <%= form.submit "Ответ в формате html:" %>
-  <input type="submit" formaction= <%= index_output_url(format: :xml) %> value="Ответ в формате xml:">
+  <table>
+    <tr>
+      <td><input type="radio" name="render_format" value="xml" id="render_format_xml" checked></td>
+      <td><label for="render_format_xml">XML</label></td>
+    </tr>
+    <tr>
+      <td><input type="radio" name="render_format" value="rss" id="render_format_rss"></td>
+      <td><label for="render_format_rss">RSS</label></td>
+    </tr>
+  </table>
+  <%= form.submit "render to html on the server" %>
+  <input type="submit" formaction= <%= index_output_url(format: :xml) %> value="render to html on the client">
 <% end %>
