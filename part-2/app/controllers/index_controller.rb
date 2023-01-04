@@ -31,9 +31,9 @@ class IndexController < ApplicationController
     when 'rss'
       uri = URI(RSS_SERVER)
     end
-    uri.query = URI.encode_www_form({ array:, number: })
+    uri.query = URI.encode_www_form({ array: array, number: number })
     p '-------------- get_xml method ---------------'
-    p URI.encode_www_form({ array:, number: })
+    p URI.encode_www_form({ array: array, number: number })
     p uri
     p uri.class
     p '-------------------- end --------------------'

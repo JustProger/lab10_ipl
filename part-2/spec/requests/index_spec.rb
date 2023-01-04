@@ -43,7 +43,7 @@ RSpec.describe 'Index', type: :request do
     # Сценарий, когда параметры неправильные
     context 'when params are invalid (code = -2)' do
       # везде render_format: :xml, среди других возможных значений: :rss
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number + 1, array:, render_format: :xml })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number + 1, array: array, render_format: :xml })}" }
 
       it 'returns http 302' do
         expect(response).to have_http_status(302)
@@ -59,7 +59,7 @@ RSpec.describe 'Index', type: :request do
     end
 
     context 'when params are invalid (code = -3)' do
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number:, array:, render_format: :some_format })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number, array: array, render_format: :some_format })}" }
 
       it 'returns http 302' do
         expect(response).to have_http_status(302)
@@ -77,7 +77,7 @@ RSpec.describe 'Index', type: :request do
     # Сценарий, когда парамаетры правильные
     context 'when params are ok' do
       # перед каждым тестом делать запрос (params - параметры запроса, xhr: true - выполнить асинхронно, чтобы работал turbo)
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number:, array:, render_format: :xml })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number, array: array, render_format: :xml })}" }
 
       it 'returns http success' do
         expect(response).to have_http_status(:success)
@@ -98,7 +98,7 @@ RSpec.describe 'Index', type: :request do
     # Сценарий, когда параметры неправильные
     context 'when params are invalid (code = -2)' do
       # везде render_format: :xml, среди других возможных значений: :rss
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number + 1, array:, render_format: :xml })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number + 1, array: array, render_format: :xml })}" }
 
       it 'returns http 302' do
         expect(response).to have_http_status(302)
@@ -114,7 +114,7 @@ RSpec.describe 'Index', type: :request do
     end
 
     context 'when params are invalid (code = -3)' do
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number:, array:, render_format: :some_format })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number, array: array, render_format: :some_format })}" }
 
       it 'returns http 302' do
         expect(response).to have_http_status(302)
@@ -132,7 +132,7 @@ RSpec.describe 'Index', type: :request do
     # Сценарий, когда парамаетры правильные
     context 'when params are ok' do
       # перед каждым тестом делать запрос (params - параметры запроса, xhr: true - выполнить асинхронно, чтобы работал turbo)
-      before { get "#{index_output_path}?#{URI.encode_www_form({ number:, array:, render_format: :xml })}" }
+      before { get "#{index_output_path}?#{URI.encode_www_form({ number: number, array: array, render_format: :xml })}" }
 
       it 'returns http success' do
         expect(response).to have_http_status(:success)
